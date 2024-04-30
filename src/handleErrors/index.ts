@@ -1,7 +1,4 @@
-import { message } from "antd";
-import { RequestTimeoutErrorType } from "../types";
 import i18n from "../../i18n";
-import axios from "axios";
 
 export const ERRORS = {
     username: i18n.t("empty_username"),
@@ -24,10 +21,10 @@ i18n.on("languageChanged", () => {
     updateErrorsLanguage()
 })
 
-export const requestTimeoutError = (error: RequestTimeoutErrorType, errorMessage: string) => {
-    if (axios.isAxiosError(error) && error.code === "ECONNABORTED") {
-        message.error({
-            content: errorMessage,
-          });
-    }
-};
+// export const requestTimeoutError = (errorMessage: string) => {
+//     if (axios.isAxiosError(error) && error.code === "ECONNABORTED") {
+//         message.error({
+//             content: errorMessage,
+//           });
+//     }
+// };
