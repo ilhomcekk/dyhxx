@@ -1,10 +1,12 @@
 import { QRCode } from "antd";
 import "./module.css";
+import { useTranslation } from "react-i18next";
 
 const Check = () => {
+  const { t } = useTranslation();
   return (
     <div className="check">
-      <div className="check-welcome">Xush kelibsiz!</div>
+      <div className="check-welcome">{t("welcome")}!</div>
       <div className="check-qr-block">
         <div>
           <div>Navbat raqami:</div>
@@ -26,7 +28,7 @@ const Check = () => {
         <li>To'lov</li>
         <li>Ro'yhat zali</li>
       </ul>
-      <div className="thanks">Kutganingiz uchun rahmat!</div>
+      <div className="thanks">{t("thanks_for_wait")}!</div>
     </div>
   );
 };

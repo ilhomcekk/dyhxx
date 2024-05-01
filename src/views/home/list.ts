@@ -5,7 +5,7 @@ export const languageList = [
     },
     {
         name: 'Узбек тили',
-        language: 'uz2',
+        language: 'cyrilic',
     },
     {
         name: 'Русский язык',

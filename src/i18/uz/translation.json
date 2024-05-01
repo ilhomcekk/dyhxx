@@ -1,4 +1,9 @@
 {
   "russian": "Ruscha",
-  "uzbek": "O'zbekcha"
+  "uzbek": "O'zbekcha",
+  "select_category": "Kategoriyani tanlang",
+  "select_service": "Xizmatni tanlang",
+  "back": "Ortga",
+  "welcome": "Xush kelibsiz",
+  "thanks_for_wait": "Kutganingiz uchun rahmat"
 }

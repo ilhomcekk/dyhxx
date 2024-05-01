@@ -7,7 +7,7 @@ const Navbar = () => {
   // const { t, i18n } = useTranslation();
 
   return (
-    <nav className="bg-body py-[10px] border-b border-gray z-[99]">
+    <nav className="bg-body py-[1%] border-b border-gray z-[99]">
       <div className="wrapper">
         <div className="flex items-center justify-between">
           <Logo />
