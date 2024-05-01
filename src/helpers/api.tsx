@@ -26,6 +26,7 @@ export const getToken = () => {
 // Language
 $api.interceptors.request.use((config) => {
   config.headers["Accept-Language"] = i18n.language.toLowerCase();
+  config.headers["ngrok-skip-browser-warning"] = "69420";
   return config;
 });
 

@@ -6,16 +6,17 @@ interface Props {
   onClick?: () => void;
   className?: string;
   icon?: ReactNode;
+  title?: string;
 }
 
-const AccordionHeader: FC<Props> = ({ onClick, className, icon }) => {
+const AccordionHeader: FC<Props> = ({ onClick, className, icon, title }) => {
   return (
     <Button
       type="primary"
       className={`flex items-center justify-between py-[1%] h-[auto] [&>span]:text-[200%] ${className}`}
       onClick={onClick}
     >
-      Физическое лицо
+      {title}
       {icon ? icon : <RightOutlined className="[&>svg]:text-[100%]" />}
     </Button>
   );

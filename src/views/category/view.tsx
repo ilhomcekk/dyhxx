@@ -11,12 +11,14 @@ const Category = () => {
       <div className="flex flex-col">
         <div className="text-center text-[200%]">{t("select_category")}</div>
         <div className="flex flex-col gap-2 mt-4">
-          {[...Array(10)].map((_, idx) => (
-            <AccordionHeader
-              onClick={() => navigate(APP_ROUTES.SERVICE)}
-              key={idx}
-            />
-          ))}
+          <AccordionHeader
+            onClick={() => navigate(APP_ROUTES.SERVICE)}
+            title="Физическое лицо"
+          />
+          <AccordionHeader
+            onClick={() => navigate(APP_ROUTES.SERVICE)}
+            title="Юридическое лицо"
+          />
         </div>
       </div>
     </div>
