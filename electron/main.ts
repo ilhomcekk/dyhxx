@@ -1,6 +1,5 @@
 import {app, BrowserWindow, ipcMain,} from 'electron'
 // @ts-ignore
-import {enableSerialPort, disableSerialPort} from './bill-acceptor/acceptor.js';
 import path from 'node:path'
 import * as fs from "fs";
 
@@ -21,10 +20,10 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
     win = new BrowserWindow({
-        // frame: false,
-        // resizable: false,
-        // fullscreen: true,
-        // transparent: true,
+        frame: false,
+        resizable: false,
+        fullscreen: true,
+        transparent: true,
         icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
@@ -71,16 +70,6 @@ ipcMain.on('print-command-request', (event, data) => {
     console.log(event);
 });
 
-ipcMain.on('bill-accept-start-request', (event) => {
-    enableSerialPort();
-    event.sender.send('bill-accept-start-response', {success: true});
-});
-
-ipcMain.on('bill-accept-stop-request', (event) => {
-    disableSerialPort();
-    event.sender.send('bill-accept-stop-response', {success: true});
-});
-
 
 function triggerEventInElectron(eventName: any, data: any) {
     win && win.webContents.send(eventName, data);
@@ -114,65 +103,55 @@ function createPrintWindow( htmlContent: any ) {
             justify-content: center;
         }
         .check {
-            width: 27mm !important;
+            width: 27mm;
         }
-        .check-image-block {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid black;
-            padding-bottom: 12px;
-            margin-bottom: 12px;
+        .strong {
+          font-family: "Monsterrat Bold";
+          font-size: 1mm;
         }
-        .check-image {
-            height: 5mm;
-            width: 70%;
-            object-contain: cover;
+        .check-welcome {
+          font-size: 1.1mm;
+          text-align: center;
+          margin-bottom: 8px;
         }
-        .check-title {
-            font-size: 2.5mm;
-            text-align: center;
-            font-family: sans-serif;
-            margin-bottom: 4px;
-        }
-        .check-block {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1px;
-            padding-bottom: 1px;
-            border-bottom: 0.5px solid rgba(0,0,0,0.06);
-        }
-        .check-left-text {
-            font-size: 1.5mm;
-            font-family: sans-serif;
-            font-weight: bold;
-            line-height: 1.2;
-        }
-        .check-right-text {
-            font-size: 1.5mm;
-            text-align: right;
-            font-family: sans-serif;
-            line-height: 1.2;
+        .check-id {
+          font-size: 3mm;
+          line-height: 1;
+          font-weight: 900;
         }
         .check-qr-block {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 2rem;
+          text-align: center;
         }
-        .check-qr {
-            width: 15mm;
-            height: 15mm;
-            margin-left: auto;
-            margin-right: auto;
+        .check-block {
+          margin-bottom: 2px;
         }
-        .thanks-text {
-            font-size: 2mm;
-            text-align: center;
-            font-family: sans-serif;
-            font-weight: bold;
-            border-top: 0.5px dashed black;
-            margin-top: 4px;
+        .check-text {
+          font-size: 1mm;
+          line-height: 1;
+          margin-bottom: 4px;
+        }
+        .thanks {
+          background: #000;
+          padding: 6px;
+          text-align: center;
+          color: #fff;
+          margin-top: 6px;
+        }
+        .qr {
+          width: 160px;
+          height: 160px;
+        }
+        
+        .check-list {
+          padding-left: 20px;
+          list-style: auto;
+        }
+        .check-list li {
+          line-height: 1.2;
         }
         </style>
     `;
